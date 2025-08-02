@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anup Bhandari - Offensive Pentester | Cybersecurity Enthusiast</title>
+    <meta name="description" content="Aspiring Offensive Pentester and Cybersecurity Enthusiast. Specializing in penetration testing, CTF challenges, and red team operations.">
+    <meta name="keywords" content="cybersecurity, penetration testing, offensive security, CTF, red team, ethical hacking">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'cyber-green': '#00ff99',
+                        'cyber-blue': '#00ffe7',
+                        'cyber-dark': '#0a0a0a',
+                        'cyber-gray': '#1a1a1a',
+                        'cyber-light': '#2a2a2a'
+                    },
+                    fontFamily: {
+                        'mono': ['JetBrains Mono', 'Fira Code', 'monospace'],
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'matrix': 'matrix 20s linear infinite',
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out'
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px #00ff99, 0 0 10px #00ff99, 0 0 15px #00ff99' },
+                            '100%': { boxShadow: '0 0 10px #00ff99, 0 0 20px #00ff99, 0 0 30px #00ff99' }
+                        },
+                        matrix: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100vh)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Custom CSS -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        
+        .matrix-bg {
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-family="monospace" font-size="12" fill="%2300ff99" opacity="0.1">01</text></svg>');
+        }
+        
+        .cyber-gradient {
+            background: linear-gradient(135deg, #00ff99 0%, #00ffe7 50%, #00ff99 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cyber-border {
+            border: 1px solid #00ff99;
+            box-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
+        }
+        
+        .cyber-card {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 153, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .cyber-card:hover {
+            border-color: #00ff99;
+            box-shadow: 0 0 20px rgba(0, 255, 153, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .skill-bar {
+            background: linear-gradient(90deg, #00ff99, #00ffe7);
+            height: 4px;
+            border-radius: 2px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .typing-cursor {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+
+<body class="bg-cyber-dark text-gray-100 font-sans scroll-smooth">
+    <!-- Matrix Background Effect -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute inset-0 matrix-bg opacity-20"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-cyber-dark/90 backdrop-blur-md border-b border-cyber-green/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-cyber-green font-mono font-bold text-xl">Anup Bhandari</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-gray-300 hover:text-cyber-green transition-colors duration-300">Home</a>
+                        <a href="#about" class="text-gray-300 hover:text-cyber-green transition-colors duration-300">About</a>
+                        <a href="#skills" class="text-gray-300 hover:text-cyber-green transition-colors duration-300">Skills</a>
+                        <a href="#projects" class="text-gray-300 hover:text-cyber-green transition-colors duration-300">Projects</a>
+                        <a href="#resume" class="text-gray-300 hover:text-cyber-green transition-colors duration-300">Resume</a>
+                        <a href="#contact" class="text-gray-300 hover:text-cyber-green transition-colors duration-300">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-cyber-green">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cyber-gray border-t border-cyber-green/20">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-cyber-green">Home</a>
+                <a href="#about" class="block px-3 py-2 text-gray-300 hover:text-cyber-green">About</a>
+                <a href="#skills" class="block px-3 py-2 text-gray-300 hover:text-cyber-green">Skills</a>
+                <a href="#projects" class="block px-3 py-2 text-gray-300 hover:text-cyber-green">Projects</a>
+                <a href="#resume" class="block px-3 py-2 text-gray-300 hover:text-cyber-green">Resume</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-300 hover:text-cyber-green">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="animate-fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    <span class="cyber-gradient">Anup Bhandari</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">
+                    Aspiring Offensive Pentester | Cybersecurity Enthusiast
+                </p>
+                <div class="text-lg text-cyber-green mb-8">
+                    <span id="typing-text">Passionate about breaking into systems (ethically)</span>
+                    <span class="typing-cursor">|</span>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#resume" class="bg-cyber-green text-cyber-dark px-8 py-3 rounded-lg font-semibold hover:bg-cyber-blue transition-all duration-300 transform hover:scale-105">
+                        Download Resume
+                    </a>
+                    <a href="#contact" class="border border-cyber-green text-cyber-green px-8 py-3 rounded-lg font-semibold hover:bg-cyber-green hover:text-cyber-dark transition-all duration-300">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-cyber-green"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-cyber-gray/50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold cyber-gradient mb-4">About Me</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">A cybersecurity enthusiast passionate about offensive security and penetration testing</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-semibold text-cyber-green">Cybersecurity Enthusiast</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        I'm a fresher in cybersecurity with a strong focus on offensive penetration testing. 
+                        My journey began with curiosity about how systems can be compromised, which led me 
+                        to explore ethical hacking and red team operations.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        I actively participate in Capture The Flag (CTF) challenges on platforms like 
+                        TryHackMe and HackTheBox, constantly learning and improving my skills in 
+                        vulnerability assessment, exploitation, and post-exploitation techniques.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="cyber-card p-4 rounded-lg">
+                            <h4 class="text-cyber-green font-semibold mb-2">Experience</h4>
+                            <p class="text-gray-400">Fresher</p>
+                        </div>
+                        <div class="cyber-card p-4 rounded-lg">
+                            <h4 class="text-cyber-green font-semibold mb-2">Focus</h4>
+                            <p class="text-gray-400">Offensive Security</p>
+                        </div>
+                        <div class="cyber-card p-4 rounded-lg">
+                            <h4 class="text-cyber-green font-semibold mb-2">Location</h4>
+                            <p class="text-gray-400">Nepal</p>
+                        </div>
+                        <div class="cyber-card p-4 rounded-lg">
+                            <h4 class="text-cyber-green font-semibold mb-2">Status</h4>
+                            <p class="text-gray-400">Available for Projects</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="cyber-card p-8 rounded-lg">
+                        <h4 class="text-xl font-semibold text-cyber-green mb-6">Tools & Platforms</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="shield" class="w-5 h-5 text-cyber-green"></i>
+                                <span class="text-gray-300">Nmap, Burp Suite, Metasploit</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="monitor" class="w-5 h-5 text-cyber-green"></i>
+                                <span class="text-gray-300">Wireshark, John the Ripper</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="terminal" class="w-5 h-5 text-cyber-green"></i>
+                                <span class="text-gray-300">Kali Linux, Parrot OS</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="globe" class="w-5 h-5 text-cyber-green"></i>
+                                <span class="text-gray-300">TryHackMe, HackTheBox</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold cyber-gradient mb-4">Skills & Expertise</h2>
+                <p class="text-gray-400">Technical skills and tools I use for penetration testing</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Network Security -->
+                <div class="cyber-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="network" class="w-8 h-8 text-cyber-green mr-3"></i>
+                        <h3 class="text-xl font-semibold text-cyber-green">Network Security</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Nmap</span>
+                                <span class="text-cyber-green">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Wireshark</span>
+                                <span class="text-cyber-green">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Exploitation -->
+                <div class="cyber-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="globe" class="w-8 h-8 text-cyber-green mr-3"></i>
+                        <h3 class="text-xl font-semibold text-cyber-green">Web Exploitation</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Burp Suite</span>
+                                <span class="text-cyber-green">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">OWASP ZAP</span>
+                                <span class="text-cyber-green">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exploitation -->
+                <div class="cyber-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="bug" class="w-8 h-8 text-cyber-green mr-3"></i>
+                        <h3 class="text-xl font-semibold text-cyber-green">Exploitation</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Metasploit</span>
+                                <span class="text-cyber-green">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">MSFconsole</span>
+                                <span class="text-cyber-green">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scripting -->
+                <div class="cyber-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="code" class="w-8 h-8 text-cyber-green mr-3"></i>
+                        <h3 class="text-xl font-semibold text-cyber-green">Scripting</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Bash</span>
+                                <span class="text-cyber-green">70%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Python</span>
+                                <span class="text-cyber-green">65%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar rounded-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platforms -->
+                <div class="cyber-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="monitor" class="w-8 h-8 text-cyber-green mr-3"></i>
+                        <h3 class="text-xl font-semibold text-cyber-green">Platforms</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Kali Linux</span>
+                                <span class="text-cyber-green">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">TryHackMe</span>
+                                <span class="text-cyber-green">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTF Experience -->
+                <div class="cyber-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="trophy" class="w-8 h-8 text-cyber-green mr-3"></i>
+                        <h3 class="text-xl font-semibold text-cyber-green">CTF Experience</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">HackTheBox</span>
+                                <span class="text-cyber-green">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">VulnHub</span>
+                                <span class="text-cyber-green">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="skill-bar rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-cyber-gray/50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold cyber-gradient mb-4">Projects & CTFs</h2>
+                <p class="text-gray-400">Showcasing my penetration testing projects and CTF walkthroughs</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="cyber-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="target" class="w-8 h-8 text-cyber-green mr-3"></i>
+                        <h3 class="text-xl font-semibold text-cyber-green">HackTheBox: Blue</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        EternalBlue exploitation walkthrough. Successfully exploited SMB vulnerability 
+                        using MS17-010 exploit, gained initial access, and performed privilege escalation.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-cyber-green/20 text-cyber-green rounded-full text-sm">EternalBlue</span>
+                        <span class="px-3 py-1 bg-cyber-green/20 text-cyber-green rounded-full text-sm">MS17-010</span>
+                        <span class="px-3 py-1 bg-cyber-green/20 text-cyber-green rounded-full text-sm">PrivEsc</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-cyber-green hover:text-cyber-blue transition-colors">
+                        Read More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="cyber-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="globe" class="w-8 h-8 text-cyber-green mr-3"></i>
+                        <h3 class="text-xl font-semibold text-cyber-green">TryHackMe: Web Fundamentals</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Comprehensive web application security assessment. Covered OWASP Top 10, 
+                        SQL injection, XSS, and CSRF vulnerabilities with practical exploitation.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-cyber-green/20 text-cyber-green rounded-full text-sm">OWASP</span>
+                        <span class="px-3 py-1 bg-cyber-green/20 text-cyber-green rounded-full text-sm">SQLi</span>
+                        <span class="px-3 py-1 bg-cyber-green/20 text-cyber-green rounded-full text-sm">XSS</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-cyber-green hover:text-cyber-blue transition-colors">
+                        Read More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="cyber-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="shield" class="w-8 h-8 text-cyber-green mr-3"></i>
+                        <h3 class="text-xl font-semibold text-cyber-green">VulnHub: Kioptrix Level 1</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Linux privilege escalation challenge. Exploited mod_ssl vulnerability, 
+                        performed kernel exploitation, and achieved root access through multiple techniques.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-cyber-green/20 text-cyber-green rounded-full text-sm">Linux</span>
+                        <span class="px-3 py-1 bg-cyber-green/20 text-cyber-green rounded-full text-sm">Kernel</span>
+                        <span class="px-3 py-1 bg-cyber-green/20 text-cyber-green rounded-full text-sm">Root</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-cyber-green hover:text-cyber-blue transition-colors">
+                        Read More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="cyber-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="network" class="w-8 h-8 text-cyber-green mr-3"></i>
+                        <h3 class="text-xl font-semibold text-cyber-green">Custom Network Scanner</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Python-based network vulnerability scanner. Implements port scanning, 
+                        service detection, and basic vulnerability assessment capabilities.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-cyber-green/20 text-cyber-green rounded-full text-sm">Python</span>
+                        <span class="px-3 py-1 bg-cyber-green/20 text-cyber-green rounded-full text-sm">Nmap</span>
+                        <span class="px-3 py-1 bg-cyber-green/20 text-cyber-green rounded-full text-sm">Scanner</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-cyber-green hover:text-cyber-blue transition-colors">
+                        View on GitHub <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-20">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold cyber-gradient mb-4">Resume</h2>
+                <p class="text-gray-400">Download my detailed resume or view it online</p>
+            </div>
+            
+            <div class="cyber-card p-8 rounded-lg text-center">
+                <i data-lucide="file-text" class="w-16 h-16 text-cyber-green mx-auto mb-6"></i>
+                <h3 class="text-2xl font-semibold text-cyber-green mb-4">Anup Bhandari - Cybersecurity Resume</h3>
+                <p class="text-gray-300 mb-6">
+                    Detailed resume including education, certifications, skills, and project experience 
+                    in offensive security and penetration testing.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="bg-cyber-green text-cyber-dark px-6 py-3 rounded-lg font-semibold hover:bg-cyber-blue transition-all duration-300">
+                        <i data-lucide="download" class="w-5 h-5 inline mr-2"></i>
+                        Download PDF
+                    </a>
+                    <a href="#" class="border border-cyber-green text-cyber-green px-6 py-3 rounded-lg font-semibold hover:bg-cyber-green hover:text-cyber-dark transition-all duration-300">
+                        <i data-lucide="eye" class="w-5 h-5 inline mr-2"></i>
+                        View Online
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-cyber-gray/50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold cyber-gradient mb-4">Get In Touch</h2>
+                <p class="text-gray-400">Ready to collaborate on cybersecurity projects or discuss opportunities</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="cyber-card p-8 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-cyber-green mb-6">Send Message</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-gray-300 mb-2">Name</label>
+                            <input type="text" class="w-full bg-cyber-dark border border-gray-600 rounded-lg px-4 py-3 text-gray-100 focus:border-cyber-green focus:outline-none transition-colors" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-300 mb-2">Email</label>
+                            <input type="email" class="w-full bg-cyber-dark border border-gray-600 rounded-lg px-4 py-3 text-gray-100 focus:border-cyber-green focus:outline-none transition-colors" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-300 mb-2">Message</label>
+                            <textarea rows="5" class="w-full bg-cyber-dark border border-gray-600 rounded-lg px-4 py-3 text-gray-100 focus:border-cyber-green focus:outline-none transition-colors" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-cyber-green text-cyber-dark py-3 rounded-lg font-semibold hover:bg-cyber-blue transition-all duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="space-y-6">
+                    <div class="cyber-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyber-green mb-4">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i data-lucide="mail" class="w-5 h-5 text-cyber-green mr-3"></i>
+                                <span class="text-gray-300">anup.bhandari@example.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-cyber-green mr-3"></i>
+                                <span class="text-gray-300">Kathmandu, Nepal</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="phone" class="w-5 h-5 text-cyber-green mr-3"></i>
+                                <span class="text-gray-300">+977 9800000000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cyber-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyber-green mb-4">Social Links</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-300 hover:text-cyber-green transition-colors">
+                                <i data-lucide="github" class="w-6 h-6"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-cyber-green transition-colors">
+                                <i data-lucide="linkedin" class="w-6 h-6"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-cyber-green transition-colors">
+                                <i data-lucide="globe" class="w-6 h-6"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-cyber-green transition-colors">
+                                <i data-lucide="target" class="w-6 h-6"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-cyber-dark border-t border-cyber-green/20 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-gray-400">
+                © 2024 <span class="text-cyber-green">Anup Bhandari</span>. All rights reserved.
+            </p>
+            <p class="text-gray-500 text-sm mt-2">
+                Built with ❤️ for the cybersecurity community
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Typing effect
+        const typingText = document.getElementById('typing-text');
+        const texts = [
+            'Passionate about breaking into systems (ethically)',
+            'Exploring vulnerabilities and exploits',
+            'Learning offensive security techniques',
+            'Participating in CTF challenges'
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function typeText() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+            }
+            
+            const speed = isDeleting ? 50 : 100;
+            setTimeout(typeText, speed);
+        }
+        
+        // Start typing effect after page load
+        setTimeout(typeText, 1000);
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-up');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all cyber cards
+        document.querySelectorAll('.cyber-card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Skill bar animations
+        const skillBars = document.querySelectorAll('.skill-bar');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.style.width;
+                    entry.target.style.width = '0%';
+                    setTimeout(() => {
+                        entry.target.style.width = width;
+                    }, 100);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        skillBars.forEach(bar => {
+            skillObserver.observe(bar);
+        });
+    </script>
+</body>
+</html>
